@@ -1,0 +1,38 @@
+{
+  "checksum": "3ac4e74eafa3d6532178a81fb704af1f940b76a7c5722c5f2eb1ad027924719f",
+  "crates": {
+    "bazel-repro-1532 0.1.0": {
+      "name": "bazel-repro-1532",
+      "version": "0.1.0",
+      "repository": null,
+      "targets": [
+        {
+          "Binary": {
+            "crate_name": "bazel-repro-1532",
+            "crate_root": "src/main.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": null,
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "edition": "2021",
+        "version": "0.1.0"
+      },
+      "license": null
+    }
+  },
+  "binary_crates": [],
+  "workspace_members": {
+    "bazel-repro-1532 0.1.0": ""
+  },
+  "conditions": {}
+}
