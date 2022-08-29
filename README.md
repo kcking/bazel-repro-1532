@@ -1,6 +1,6 @@
 reproduction for https://github.com/bazelbuild/rules_rust/pull/1532
 
-running `CARGO_BAZEL_REPIN=true bazel build //:wasm-and-bin`
+running `bazel build //:wasm-and-bin`
 
 results in
 ```
