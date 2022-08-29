@@ -9,11 +9,6 @@ http_archive(
     ],
 )
 
-# local_repository(
-#     name = "rules_rust",
-#     path = "../../dev/rules_rust",
-# )
-
 load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_register_toolchains")
 
 rules_rust_dependencies()
@@ -47,29 +42,3 @@ crate_repositories()
 load("@rules_rust//wasm_bindgen:repositories.bzl", "rust_wasm_bindgen_repositories")
 
 rust_wasm_bindgen_repositories()
-
-# zigcc
-BAZEL_ZIG_CC_VERSION = "v0.9.1"
-
-http_archive(
-    name = "bazel-zig-cc",
-    sha256 = "ab596041c0217a66ed8e6af49955c5d427b1f3e5b5603713696b3444810608f0",
-    strip_prefix = "bazel-zig-cc-{}".format(BAZEL_ZIG_CC_VERSION),
-    urls = ["https://git.sr.ht/~motiejus/bazel-zig-cc/archive/{}.tar.gz".format(BAZEL_ZIG_CC_VERSION)],
-)
-
-load("@bazel-zig-cc//toolchain:defs.bzl", zig_toolchains = "toolchains")
-
-zig_toolchains()
-
-register_toolchains(
-    "@zig_sdk//toolchain:linux_amd64_gnu.2.19",
-    "@zig_sdk//toolchain:linux_arm64_gnu.2.28",
-    # macos toolchains fail with iconv error that I'm not sure how to fix:
-    # https://github.com/ziglang/zig/issues/10485#issuecomment-1013533258
-    # don't register them so we just use local toolchain when on a mac
-    # "@zig_sdk//toolchain:darwin_amd64",
-    # "@zig_sdk//toolchain:darwin_arm64",
-    "@zig_sdk//toolchain:windows_amd64",
-    "@zig_sdk//toolchain:windows_arm64",
-)

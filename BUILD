@@ -13,19 +13,13 @@ rust_binary(
     ),
 )
 
-platform(
-    name = "linux_arm64",
-    constraint_values = [
-        "@platforms//os:linux",
-        "@platforms//cpu:arm64",
-    ],
-)
-
 rust_wasm_bindgen(
     name = "wasm",
     wasm_file = ":bin",
 )
 
+# in practice, this rule would be a web server compiled as native code that has
+# a runtime wasm data dependency
 filegroup(
     name="wasm-and-bin",
     srcs=[":wasm", ":bin"],
